@@ -265,7 +265,8 @@ public abstract class BinarySearchTreeBase<TKey, TValue, TNode>(IComparer<TKey>?
         {
             u.Parent.Right = v;
         }
-        v?.Parent = u.Parent;
+        if (v != null)
+            v.Parent = u.Parent;
     }
     public IEnumerable<TreeEntry<TKey, TValue>> InOrder() => new TreeIterator(Root, TraversalStrategy.InOrder);
     public IEnumerable<TreeEntry<TKey, TValue>> PreOrder() => new TreeIterator(Root, TraversalStrategy.PreOrder);
@@ -276,7 +277,7 @@ public abstract class BinarySearchTreeBase<TKey, TValue, TNode>(IComparer<TKey>?
 
     /// <summary>
     /// Внутренний класс-итератор. 
-    /// Реализует паттерн Iterator вручную, без yield return (ban).
+    /// Реализует паттерн Iterator вручную, без yield return (тк он забанен).
     /// </summary>
     private struct TreeIterator :
         IEnumerable<TreeEntry<TKey, TValue>>,
