@@ -92,6 +92,7 @@ internal class KaratsubaMultiplier : IMultiplier
         // Собираем результат:
         // answer = z0 + z1 * B^split + z2 * B^(2*split)
         // где B = 2^32 (основание системы счисления).
+        // Шифт - аналог умножения на степень основания типа 10^m
         // ShiftWords сдвигает массив на указанное количество слов (умножение на B^shift).
         uint[] partLow = z0;
         uint[] partMid = ShiftWords(z1, split);
